@@ -80,4 +80,4 @@ def run_graph_part(f_name, spatial_size, n_channels, n_iter=100):
 
 
 if __name__ == '__main__':
-    results = run_graph_part(conv_block, spatial_size=512, n_channels=64, n_iter=100)
+    results = run_graph_part(conv_block, spatial_size=512, n_channels=32, n_iter=100)
