@@ -80,4 +80,7 @@ def run_graph_part(f_name, spatial_size, n_channels, n_iter=100):
 
 
 if __name__ == '__main__':
-    results = run_graph_part(conv_block, spatial_size=512, n_channels=32, n_iter=100)
+    results = run_graph_part(conv_block, spatial_size=512, n_channels=150, n_iter=100)
+    # 0,43 on CP
+    # https://www.youtube.com/watch?v=1cHx1baKqq0
+    # https://www.youtube.com/watch?v=jOFco1xuIeo
