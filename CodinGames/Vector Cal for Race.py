@@ -4,10 +4,17 @@ from scipy import interpolate
 from matplotlib import pyplot as plt
 
 
-def generate_map(checkpoint_count=3, boundaries_x=16000, boundaries_y=9000, radius_checkpoint=600):
+def generate_map(checkpoint_count=3, boundaries=9000, radius_checkpoint=600):
     # generating the map for the game
     # creating random checkpoints
-    x = random.randint(100, size=(3, 5))
+    checkpoints_coordinates = np.random.randint(100, boundaries, size=(checkpoint_count, 2))
+    # start point player
+    start_point = np.random.randint(100, boundaries, size=2)
+    # start vector player
+    start_vector = np.random.randint(100, size=2)
+    # returning the values
+    return checkpoints_coordinates, start_point, start_vector
+
 
 # x = np.array([23, 23.5, 24, 25, 25, 23])
 # y = np.array([8, 9, 11, 12, 13, 12])
@@ -39,4 +46,5 @@ def generate_map(checkpoint_count=3, boundaries_x=16000, boundaries_y=9000, radi
 # plt.show()
 
 if __name__ == '__main__':
-    None
+    # start code
+    print(generate_map())
