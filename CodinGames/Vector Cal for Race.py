@@ -27,31 +27,30 @@ def create_route(checkpoints_coordinates, start_point, start_vector):
     # evaluate the spline fits for 1000 evenly spaced distance values
     xi, yi = interpolate.splev(np.linspace(0, 1, 50), tck)
     # creating vectors dummy
-    vectors = np.array([[23, 8, 0.5, 1], [24, 11, 1, 1]])
+    vectors = np.array([[8000, 6500, 250, 456], [6532, 7423, 1000, -1000]])
     # retuning the generated route
     return checkpoints_coordinates, start_point, start_vector, xi, yi, vectors
 
 
 def plot_data(checkpoints_coordinates, start_point, start_vector, xi, yi, vectors):
-    # plotting the data
     # plot the result
     fig, ax = plt.subplots(1, 1)
     ax.plot(checkpoints_coordinates[:, 0], checkpoints_coordinates[:, 1], 'or', label='points')
     ax.plot(xi, yi, '-b', label='line')
 
-    soa = np.array([[23, 8, 0.5, 1], [24, 11, 1, 1]])
-    X, Y, U, V = zip(*soa)
-
-    ax.quiver(X, Y, U, V, angles='xy', scale_units='xy', scale=1, width=0.008, color='lawngreen')
+    X, Y, U, V = zip(*vectors)
+    ax.quiver(X, Y, U, V, angles='xy', scale_units='xy', scale=1, width=0.004, color='lawngreen', label='vector')
 
     plt.legend()
-    plt.draw()
     plt.show()
 
 
 if __name__ == '__main__':
     # start code
-    coor, s_p, s_v = generate_map()
+    # coor, s_p, s_v = generate_map()
+    coor = np.array([[7532, 3931], [2921, 4996], [8498, 8150]])
+    s_p = np.array([6470, 6183])
+    s_v = np.array([76, 14])
     print(coor, s_p, s_v)
     # generating the route
     c_c, s_p, s_v, x, y, v = create_route(coor, s_p, s_v)
