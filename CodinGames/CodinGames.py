@@ -71,3 +71,30 @@ while True:
         thrust = "BOOST"
 
     print(str(next_checkpoint_x - (x - prevX) * 3) + " " + str(next_checkpoint_y - (y - prevY) * 3) + " " + str(thrust))
+
+
+# this is the attack pod
+def pod_2_dumm(d):
+    if d['my_opponent_1'][5] > d['my_opponent_2'][5]:
+        to_attack = 'my_opponent_1'
+    elif d['my_opponent_1'][5] < d['my_opponent_2'][5]:
+        to_attack = 'my_opponent_2'
+    else:
+        to_attack = 'my_opponent_1'
+
+    # with same speed vector movement in next thing
+    next_opp_x = (d[to_attack][2] * 20 / 17) + d[to_attack][0]
+    next_opp_y = (d[to_attack][3] * 20 / 17) + d[to_attack][1]
+
+    # checking where I would land when deploying shiel now
+    # angle_r_x = math.cos(d['mypod_2'][4]*math.pi/180)
+    # angle_r_y = math.sin(d['mypod_2'][4]*math.pi/180)
+    x_with_shield = d['mypod_2'][2] + d['mypod_2'][0]
+    y_with_shield = d['mypod_2'][3] + d['mypod_2'][0]
+    # cal the distance with shield to opp
+    distance_with_shield = ((next_opp_x - x_with_shield) ** 2 + (next_opp_y - y_with_shield) ** 2) ** 0.5
+    # check size of distance
+    if distance_with_shield < 1000:
+        print(str(int(next_opp_x)) + ' ' + str(int(next_opp_y)) + ' SHIELD')
+    else:
+        print(str(int(next_opp_x)) + ' ' + str(int(next_opp_y)) + ' 100')
